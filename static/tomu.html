@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Tomu WebUSB LED WebSocket</title>
+</head>
+<body>
+	<h1>Tomu WebUSB Simple LED WebSocket</h1>
+	<p>This interacts with the <a href="https://github.com/im-tomu/tomu-samples/tree/master/usb_simple">usb_simple</a> sample, and is a terrible idea.</p>
+	<button id="connect">Grab device</button>
+	<script type="module">
+		import TomuLight from "./tomu-light.js";
+		const socket = new WebSocket((location.protocol === "http:" ? "ws://" : "wss://") + location.host + "/ws-tomu");
+
+		connect.addEventListener("click", async function () {
+			let light = await TomuLight.get();
+			console.log("Connected to Tomu:", light);
+			socket.addEventListener("message", event => {
+				console.log("Received message:", event);
+				light.set(+event.data);
+				socket.send(event.data);
+			});
+		});
+	</script>
+</body>
+</html>
