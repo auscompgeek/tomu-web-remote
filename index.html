@@ -8,7 +8,12 @@
 <body>
 	<h1>Tomu LED Remote Control</h1>
 	<form action="/set" method="POST">
-		<input type="number" name="state" />
+		<select name="state">
+			<option value="0">off</option>
+			<option value="1">green</option>
+			<option value="2">red</option>
+			<option value="3">green + red</option>
+		</select>
 		<input type="submit" />
 	</form>
 </body>
