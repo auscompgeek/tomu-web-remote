@@ -1,0 +1,10 @@
+[package]
+name = "tomu-web-remote"
+version = "0.1.0"
+authors = ["David Vo <david@vovo.id.au>"]
+
+[dependencies]
+actix = "0.7"
+actix-web = "0.7"
+serde = "*"
+serde_derive = "*"
